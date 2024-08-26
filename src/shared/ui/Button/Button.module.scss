@@ -1,0 +1,51 @@
+.Button {
+	padding: 6px;
+	transition: all 0.3s ease-in-out;
+	border-radius: 5px;
+}
+
+.primary {
+	background-color: var(--primary-color);
+	color: #fff;
+	border: none;
+
+	&:hover {
+		background-color: color-mix(
+			in srgb,
+			var(--primary-color),
+			rgba(255, 255, 255, 0.1)
+		);
+		color: #fff;
+	}
+
+	&:active {
+		background-color: color-mix(in srgb, var(--primary-color), rgb(1, 57, 66));
+	}
+}
+
+.link {
+	background-color: transparent;
+	border: none;
+	color: var(--link-color);
+
+	&:hover {
+		color: var(--link-color-hovered);
+	}
+
+	&:active {
+		color: var(--link-color-active);
+	}
+}
+
+.transparent {
+	background-color: transparent;
+	border: none;
+
+	&:hover {
+		background-color: transparent;
+	}
+
+	&:active {
+		background-color: transparent;
+	}
+}

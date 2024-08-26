@@ -1,0 +1,78 @@
+.Notification {
+  position: absolute;
+  opacity: 0;
+  transition: 0.2s all ease-in-out;
+  z-index: var(--notification-z-index);
+  width: auto;
+}
+
+.opened {
+  opacity: 1;
+}
+
+.close_btn {
+  top: 2px;
+  right: 2px;
+  position: absolute;
+  padding: 0;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.is_closing {
+  opacity: 0;
+
+  .close_btn {
+    display: none;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.top-right {
+  top: 15px;
+  right: 10px;
+
+	&.opened {
+    transform: translateX(-10px);
+  }
+
+  &.is_closing {
+    transform: translateX(10px);
+  }
+}
+
+.top-left {
+  top: 15px;
+  left: 5px;
+
+  &.opened {
+    transform: translateX(10px);
+  }
+
+  &.is_closing {
+    transform: translateX(-10px);
+  }
+}
+
+.top {
+  top: 0px;
+  left: 50%;
+  right: 50%;
+
+	&.opened {
+    transform: translateY(15px);
+  }
+
+  &.is_closing {
+    transform: translateY(-15px);
+  }
+}
+
+.is_hidden {
+  display: none;
+}

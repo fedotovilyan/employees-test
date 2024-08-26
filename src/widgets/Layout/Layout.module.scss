@@ -1,0 +1,19 @@
+.main_wrapper {
+	padding: calc(var(--header-height) + var(--main-wrapper-padding))
+		var(--main-wrapper-padding) var(--main-wrapper-padding) var(--main-wrapper-padding);
+
+	min-height: 100vh;
+}
+
+.main {
+	background-color: var(--secondary-color);
+	padding: 20px;
+	min-height: calc(100vh - var(--main-wrapper-padding) * 2 - var(--header-height));
+	border-radius: 10px;
+}
+
+.layout {
+	min-height: 100vh;
+	background-color: var(--primary-background-color);
+	font-size: var(--font-size);
+}
