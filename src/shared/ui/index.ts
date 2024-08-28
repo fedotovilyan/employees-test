@@ -6,3 +6,4 @@ export * from './Input/Input';
 export * from './Select/Select';
 export * from './Notification/Notification';
 export * from './Loader/Loader';
+export * from './Breadcrumbs/Breadcrumbs';

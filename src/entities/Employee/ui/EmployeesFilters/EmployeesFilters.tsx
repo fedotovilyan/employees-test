@@ -1,6 +1,6 @@
 import { Flex, Input, Select } from "@/shared/ui";
 import { rolesOptions } from "../../constants";
-import { useId } from "react";
+import { useId, useMemo } from "react";
 import { useAppDispatch, useAppSelector } from "@/app/store/store";
 import {
   IEmployeesFilters,
@@ -15,18 +15,21 @@ export const EmployeesFilters = () => {
   const dispatch = useAppDispatch();
   const { birthday, name } = useAppSelector(selectEmployeesSort);
 
+  const defaultBirthday = useMemo(() => [birthday], [birthday]);
+  const defaultName = useMemo(() => [name], [name]);
+
   return (
     <Flex gap={10} wrap="wrap" align="center">
       <Select
         options={rolesOptions}
         placeholder="Должность"
-        onSelectChange={({ value }) =>
+        onSelect={({ value }) => {
           dispatch(
             updateEmployeesFilters({
               role: value as IEmployeesFilters["role"],
             })
-          )
-        }
+          );
+        }}
       />
       <Flex gap={5} align="center">
         <Input
@@ -50,7 +53,7 @@ export const EmployeesFilters = () => {
         <Select
           placeholder="Дата рождения"
           id={`${id}-birthday`}
-          defaultValue={birthday}
+          defaultValues={defaultBirthday}
           options={[
             {
               label: "По убыванию",
@@ -63,7 +66,7 @@ export const EmployeesFilters = () => {
               value: SortOrder.Asc,
             },
           ]}
-          onSelectChange={({ value }) =>
+          onSelect={({ value }) =>
             dispatch(
               updateEmployeesSort({
                 birthday: value as SortOrder,
@@ -78,7 +81,7 @@ export const EmployeesFilters = () => {
         <Select
           placeholder="Имя"
           id={`${id}-name`}
-          defaultValue={name}
+          defaultValues={defaultName}
           options={[
             {
               label: "По убыванию",
@@ -91,13 +94,8 @@ export const EmployeesFilters = () => {
               value: SortOrder.Asc,
             },
           ]}
-          onSelectChange={({ value }) =>
-            dispatch(
-              updateEmployeesSort({
-                name: value as SortOrder,
-                birthday: undefined,
-              })
-            )
+          onSelect={({ value }) =>
+            dispatch(updateEmployeesSort({ name: value as SortOrder, birthday: undefined }))
           }
         />
       </Flex>

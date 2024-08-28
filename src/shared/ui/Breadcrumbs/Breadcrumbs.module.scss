@@ -1,0 +1,31 @@
+.breadcrumbs {
+	display: flex;
+	gap: 3px;
+	font-size: 18px;
+	flex-wrap: wrap;
+}
+
+.label {
+	text-decoration: none;
+	color: rgba($color: rgb(93, 93, 100), $alpha: 0.9);
+	padding: 3px;
+
+	&:hover {
+		background-color: rgba($color: rgb(93, 93, 100), $alpha: 0.1);
+		border-radius: 10px;
+	}
+}
+
+.item {
+	display: flex;
+}
+
+.divider {
+	margin-right: 3px;
+	color: rgba($color: rgb(93, 93, 100), $alpha: 0.9);
+	padding: 3px;
+}
+
+.active {
+	color: rgba($color: rgb(72, 206, 255), $alpha: 0.9);
+}

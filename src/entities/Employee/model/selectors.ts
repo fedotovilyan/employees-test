@@ -47,8 +47,8 @@ export const selectFilteredAndSortedEmployees = createSelector(
 
     if (sort.birthday) {
       employeesCopy = employeesCopy.toSorted((a, b) => {
-        const aBirthday = dayjs(a.birthday);
-        const bBirthday = dayjs(b.birthday);
+        const aBirthday = dayjs(a.birthday, 'DD.MM.YYYY');
+        const bBirthday = dayjs(b.birthday, 'DD.MM.YYYY');
 
         if (sort.birthday === SortOrder.Asc) {
           return aBirthday.isAfter(bBirthday) ? 1 : -1;

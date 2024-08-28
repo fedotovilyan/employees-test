@@ -1,7 +1,7 @@
 import { Employee, EmployeeRole } from "@/shared/types/Employee";
 import { Button, Flex, Input, Select } from "@/shared/ui";
 import { phoneMaskInputHandler } from "@/shared/utils/phoneMaskInputHandler";
-import { useEffect, useId } from "react";
+import { useEffect, useId, useMemo } from "react";
 import cls from "./EmployeeForm.module.scss";
 import { birthdayMaskInputHandler } from "@/shared/utils/birthdayMaskInputHandler";
 import { useForm } from "react-hook-form";
@@ -31,6 +31,7 @@ export const EmployeeForm = ({
     formState: { errors },
     setValue,
   } = useForm<EmployeeFormData>();
+  const role = useMemo(() => [defaultValues?.role], [defaultValues?.role]);
 
   useEffect(() => {
     if (defaultValues) {
@@ -100,15 +101,12 @@ export const EmployeeForm = ({
           })}
           placeholder="Выберите должность"
           id={`${id}-role`}
-          name="role"
           options={rolesOptions}
           className={classNames({
             [cls.err_input]: !!errors.role,
           })}
-          defaultValue={defaultValues?.role}
-          onSelectChange={({ value }) =>
-            setValue("role", value as EmployeeRole)
-          }
+          defaultValues={role}
+          onSelect={({ value }) => setValue("role", value as EmployeeRole)}
         />
         {errors.role && <ErrorText>{errors.role.message}</ErrorText>}
       </Flex>

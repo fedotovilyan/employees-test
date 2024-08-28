@@ -77,7 +77,6 @@ export const employeesSlice = createSlice({
         state.status = "pending";
       })
       .addCase(addEmployee.fulfilled, (state, { payload }) => {
-        console.log(payload);
         state.status = "success";
         state.entities[payload.id] = payload;
         state.ids.push(payload.id);
